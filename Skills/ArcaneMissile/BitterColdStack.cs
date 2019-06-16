@@ -5,7 +5,7 @@ using UnityEngine;
 public class BitterColdStack : MonoBehaviour {
 
     static GameObject bitter_cold_stack;
-    Enemy enemy;
+    EnemyController enemy;
     int stack_count;
     float slow_amount;
 
@@ -17,7 +17,7 @@ public class BitterColdStack : MonoBehaviour {
         {
             bitter_cold_stack = Resources.Load<GameObject>("BitterColdStack");
         }
-        enemy = GetComponent<Enemy>();
+        enemy = GetComponent<EnemyController>();
         slow_amount = enemy.move_speed / 4;
 	}
 

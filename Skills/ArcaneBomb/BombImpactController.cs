@@ -10,7 +10,7 @@ public class BombImpactController : MonoBehaviour {
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().TakeHealth(damage);
+            collision.GetComponent<EnemyController>().TakeHealth(damage);
         }
     }
 }

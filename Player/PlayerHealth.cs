@@ -14,10 +14,12 @@ public class PlayerHealth : Resource {
     // Use this for initialization
     void Start () {
         Initialize();
+        OnEmpty += OnDeath;
 	}
 
-    void OnDeath()
+    void OnDeath(float current, float max)
     {
+        print("dead");
         LevelManager.OnNewLevel -= Initialize;
         LevelManager.singleton.GameOver();
     }

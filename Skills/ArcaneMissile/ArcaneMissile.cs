@@ -52,7 +52,7 @@ public class ArcaneMissile : MonoBehaviour {
 
     public void ShootMissile(Vector2 dir, Vector2 spawn_pos)
     {
-        if (ArcaneManager.singleton.SafeTake(ApCost()))
+        if (Arcane.singleton.SafeTake(ApCost()))
         {
             GameObject obj = PoolManager.Spawn(missile, spawn_pos, Quaternion.identity);
             obj.GetComponent<MissileController>().damage = Random.Range(min_dmg, max_dmg + 1);

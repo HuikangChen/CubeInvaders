@@ -3,25 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour {
+/// <summary>
+/// The enemies are relatively simple so most of it's functionality can be contained within this script
+/// Contains the enemy's functionality including its health and movement
+/// It's health and movespeed are scaled based on the difficulty of the game
+/// </summary>
 
-    public float max_health_base;
-    public int max_health_tier_multiplier;
-    public int max_health_stage_multiplier;
+public class EnemyController : MonoBehaviour {
 
-    float max_health;
-    float current_health;
+    /// <summary>
+    /// The difficulty of the levels are split up into tiers/stages. 
+    /// Every tier contains 5 stages
+    /// </summary>
+
+    //the base health of the enemy
+    [Tooltip("Base hp, it will be scaled on the other multiplers")]
+    [SerializeField]
+    private float base_health;
+
+    //The health multiplier after every tier
+    [Tooltip("Every 5 stages, this multiplier is applied to the base health")]
+    [SerializeField]
+    private int health_tier_multiplier;
+
+    //The health multiplier after every stage in that tier
+    [Tooltip("Every stage this multiplier is applied and added onto the max health")]
+    [SerializeField]
+    private int health_stage_multiplier;
+
+    //Our enemy's max health after the calculations. it is calculated everytime enemy is spawned
+    //Equation for maxHealh = ((CurrentLevel / 5) * health_tier_multiplier) + (((CurrentLevel - 1) % 5) * health_stage_multiplier)
+    private float max_health;
+
+    //Current health of the enemy during game
+    private float current_health;
+
+    //The display of the health on the enemy
+    [SerializeField]
+    private Image health_bar;
 
     public float move_speed;
 
-    public GameObject death_effect;
-    public GameObject explosion_effect;
-    public Image health_bar;
+    //particle FX
+    [SerializeField] private GameObject death_effect;
+    [SerializeField] private GameObject explosion_effect;
 
-    Rigidbody2D rb;
-    bool despawned;
+    private Rigidbody2D rb;
+    private bool despawned;
     
+    //How much arcane shard this enemy will drop after it's killed
     public int arcane_shard_amount;
+
+    //The arcane shard prefab
     public GameObject arcane_shard;
 
     void Awake()
@@ -130,7 +163,7 @@ public class Enemy : MonoBehaviour {
 
     void SetHealthDifficulty()
     {
-        max_health = (max_health_base + (LevelManager.singleton.current_level / 5)  * max_health_tier_multiplier) + 
-                                        (((LevelManager.singleton.current_level - 1) % 5) * max_health_stage_multiplier);
+        max_health = (base_health + (LevelManager.singleton.current_level / 5)  * health_tier_multiplier) + 
+                                        (((LevelManager.singleton.current_level - 1) % 5) * health_stage_multiplier);
     }
 }

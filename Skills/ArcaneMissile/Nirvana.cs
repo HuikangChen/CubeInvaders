@@ -8,7 +8,7 @@ public class Nirvana : MonoBehaviour {
     {
         if (col.tag == "Enemy")
         {
-            ArcaneManager.singleton.Add(1);
+            Arcane.singleton.Add(1);
         }
     }
 

@@ -4,9 +4,9 @@ using UnityEngine;
 using Assets.ProgressBars.Scripts;
 using TMPro;
 
-public class ArcaneManager : Resource {
+public class Arcane : Resource {
 
-    public static ArcaneManager singleton;
+    public static Arcane singleton;
 
     public float arcane_regen;
 

@@ -57,7 +57,7 @@ public class ArcaneBomb : MonoBehaviour {
 
     public void ShootBomb(Vector2 dir, Vector2 spawn_pos)
     {
-        if (ArcaneManager.singleton.SafeTake(ap_cost))
+        if (Arcane.singleton.SafeTake(ap_cost))
         {
             GameObject obj = PoolManager.Spawn(bomb, spawn_pos, Quaternion.identity);
             SpawnMuzzleFlash(redFlash, spawn_pos, QuickMaths.VectorToAngle(dir.x, dir.y));

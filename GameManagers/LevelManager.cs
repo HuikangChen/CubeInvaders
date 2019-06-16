@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour {
     public Transform la_start;
     public Transform la_end;
 
-    ArcaneManager arcane_manager;
+    Arcane arcane_manager;
     public int current_level;
 
     [Space(20)]
@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour {
 
     [Space(10)]
     [Header("Monster and Spawner Types")]
-    public List<Enemy> enemy = new List<Enemy>();
+    public List<EnemyController> enemy = new List<EnemyController>();
     public List<EnemySpawner> spawner = new List<EnemySpawner>();
 
     [Space(10)]
@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour {
 
     void Start()
     {
-        arcane_manager = ArcaneManager.singleton;
+        arcane_manager = Arcane.singleton;
         arcane_manager.Initialize();
         arcane_manager.StartArcaneRegen();
 

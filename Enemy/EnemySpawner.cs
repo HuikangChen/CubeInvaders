@@ -28,12 +28,12 @@ public class EnemySpawner : MonoBehaviour {
     void SpawnEnemy(float speed)
     {
         GameObject obj = PoolManager.Spawn(enemy, transform.position, Quaternion.identity);
-        obj.GetComponent<Enemy>().move_speed = speed;
+        obj.GetComponent<EnemyController>().move_speed = speed;
     }
 
     void SpawnEnemy(GameObject enemy, float speed)
     {
         GameObject obj = PoolManager.Spawn(enemy, transform.position, Quaternion.identity);
-        obj.GetComponent<Enemy>().move_speed = speed;
+        obj.GetComponent<EnemyController>().move_speed = speed;
     }
 }

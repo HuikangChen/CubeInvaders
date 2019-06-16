@@ -34,7 +34,7 @@ public class DOT : MonoBehaviour
                 if (hits[i].tag == "Enemy")
                 {
                     DamageTextManager.CreatePopupText(((int)damage).ToString(), hits[i].transform);
-                    hits[i].GetComponent<Enemy>().TakeHealth((int)damage);
+                    hits[i].GetComponent<EnemyController>().TakeHealth((int)damage);
                 }
             }
         }

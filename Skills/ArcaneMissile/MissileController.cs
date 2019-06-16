@@ -67,7 +67,7 @@ public class MissileController : MonoBehaviour {
                     PoolManager.Despawn(obj, 2f);
                     can_despawn = false;
                     DamageTextManager.CreatePopupText(damage.ToString(), col.transform);
-                    col.GetComponent<Enemy>().TakeHealth(damage);
+                    col.GetComponent<EnemyController>().TakeHealth(damage);
                     PoolManager.Despawn(gameObject);
                 }
             }
